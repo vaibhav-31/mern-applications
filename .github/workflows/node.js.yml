@@ -13,7 +13,7 @@ jobs:
     runs-on: self-hosted
     defaults:
        run:
-         working-directory: ./backendv/
+         working-directory: ./backend/
 
     strategy:
       matrix:
@@ -25,9 +25,9 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 18.16.0
         cache: 'npm'
-        cache-dependency-path: './backend/package-lock.json'
+        cache-dependency-path: './frontend/package-lock.json'
     - run: npm ci
       working-directory: './backend'
     - run: npm run build
